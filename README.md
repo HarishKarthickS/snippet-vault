@@ -1,8 +1,6 @@
 # snippet-vault
 
-A local catalog of code fragments. The room is a **black gallery wall**: one white card sits in a spotlight, and languages hang as wall labels. Search the accession list, filter by medium, copy the work on view. The hanging lives in your browser (`localStorage`).
-
-Not a kraft index-card desk. Not cream paper.
+A local snippet manager: languages in a dark sidebar, a searchable list, and a light editor with copy. Snippets stay in your browser (`localStorage`).
 
 ## How to run
 
@@ -13,12 +11,12 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Hall 14 should show a ceiling track, a cone of light, and **Untitled (Promise)** on the white card.
+Open [http://localhost:3000](http://localhost:3000). You should see **Snippet Vault** with **Untitled (Promise)** in the editor.
 
-- Type in **Find a work** to filter titles, bodies, and accession numbers.
-- Tap a language plaque to hang only that medium.
-- **Lift a rubbing** copies the fragment to the clipboard.
-- If local notes are corrupt, **Rehang the seed works** restores the original eight pieces.
+- Search titles, bodies, and ids.
+- Filter by language in the left sidebar.
+- **Copy** puts the snippet on the clipboard.
+- If local data is corrupt, **Restore seed snippets** reloads the original eight.
 
 ```powershell
 npm run build
@@ -28,9 +26,9 @@ npm start
 ## Layout
 
 - `src/domain` — snippet, language tags, catalog search
-- `src/data` — seed hanging and `localStorage` catalog
-- `src/ui` — gallery wall, spotlight card, plaques
+- `src/data` — seed snippets and `localStorage` vault
+- `src/ui` — language nav, snippet list, code pane
 
 ## Screenshot
 
-![Hall 14, one work in the spotlight](docs/hall.png)
+![Snippet Vault: languages, list, and editor](docs/vault.png)
