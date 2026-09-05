@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { Atkinson_Hyperlegible, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import "@/ui/gallery.css";
+import "@/ui/vault.css";
 
-const dmSans = DM_Sans({
+const atkinson = Atkinson_Hyperlegible({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-wall",
+  weight: ["400", "700"],
+  variable: "--font-ui",
 });
 
 const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-work",
+  variable: "--font-code",
 });
 
 export const metadata: Metadata = {
-  title: "snippet-vault — Hall 14",
-  description: "A black gallery wall. One white card in a spotlight. Languages as wall labels.",
+  title: "Snippet Vault",
+  description: "Search, filter, and copy local code snippets.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${jetbrains.variable}`}>{children}</body>
+      <body className={`${atkinson.variable} ${jetbrains.variable}`}>{children}</body>
     </html>
   );
 }

@@ -18,27 +18,27 @@ export function GalleryApp() {
   }
 
   return (
-    <div className="hall">
-      <p className="mast">
-        <strong>Hall 14</strong> · fragments
-      </p>
-      <div className="ceiling" aria-hidden="true">
-        <div className="track" />
-        <div className="lamp" />
-      </div>
-      <div className="cone" aria-hidden="true" />
-      <div className="hall-grid">
-        <aside className="catalog">
-          <div className="search">
-            <label htmlFor="catalog-search">Find a work</label>
-            <input
-              id="catalog-search"
-              value={vault.query}
-              onChange={(event) => vault.setQuery(event.target.value)}
-              placeholder="title, body, accession"
-              autoComplete="off"
-            />
-          </div>
+    <div className="app">
+      <aside className="lang-col">
+        <p className="brand">Snippet Vault</p>
+        <LanguagePlaques
+          snippets={vault.snippets}
+          language={vault.language}
+          onChange={vault.setLanguage}
+        />
+      </aside>
+      <aside className="list-col">
+        <div className="search">
+          <label htmlFor="catalog-search">Search</label>
+          <input
+            id="catalog-search"
+            value={vault.query}
+            onChange={(event) => vault.setQuery(event.target.value)}
+            placeholder="Title, body, or id"
+            autoComplete="off"
+          />
+        </div>
+        <div className="catalog">
           {vault.visible.length === 0 ? (
             <EmptyCatalog />
           ) : (
@@ -48,25 +48,20 @@ export function GalleryApp() {
               onSelect={vault.select}
             />
           )}
-        </aside>
-        <section className="stage">
-          {vault.selected ? (
-            <SpotlightCard
-              snippet={vault.selected}
-              copied={vault.copied}
-              copyFailed={vault.copyFailed}
-              onCopy={() => void vault.copySelected()}
-            />
-          ) : (
-            <EmptySpotlight />
-          )}
-          <LanguagePlaques
-            snippets={vault.snippets}
-            language={vault.language}
-            onChange={vault.setLanguage}
+        </div>
+      </aside>
+      <section className="editor-col">
+        {vault.selected ? (
+          <SpotlightCard
+            snippet={vault.selected}
+            copied={vault.copied}
+            copyFailed={vault.copyFailed}
+            onCopy={() => void vault.copySelected()}
           />
-        </section>
-      </div>
+        ) : (
+          <EmptySpotlight />
+        )}
+      </section>
     </div>
   );
 }

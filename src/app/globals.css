@@ -1,16 +1,20 @@
 :root {
-  --gallery: #070707;
-  --plaster: #101010;
-  --seam: #1c1c1c;
-  --spot-core: #fff7e4;
-  --spot-mid: rgba(255, 244, 214, 0.22);
-  --matte: #fbfbfb;
-  --graphite: #161616;
-  --quiet: #6a6a6a;
-  --label-face: #f3f3f3;
-  --label-edge: #2a2a2a;
-  --warn: #c45c3a;
-  --ok: #2f6f4e;
+  --sidebar: #16181d;
+  --sidebar-2: #1c1f26;
+  --sidebar-hover: #252830;
+  --sidebar-line: #2a2e38;
+  --sidebar-text: #d8dbe2;
+  --sidebar-muted: #8b909c;
+  --accent: #0d9488;
+  --accent-soft: rgba(13, 148, 136, 0.18);
+  --editor: #f4f5f7;
+  --paper: #ffffff;
+  --ink: #1a1c20;
+  --ink-muted: #5c6370;
+  --editor-line: #e3e5ea;
+  --warn: #b45309;
+  --ok: #0d9488;
+  --focus: #0d9488;
 }
 
 *,
@@ -23,13 +27,13 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: var(--gallery);
-  color: var(--label-face);
+  background: var(--sidebar);
+  color: var(--sidebar-text);
 }
 
 body {
   min-height: 100vh;
-  font-family: var(--font-wall), "DM Sans", sans-serif;
+  font-family: var(--font-ui), "Atkinson Hyperlegible", sans-serif;
 }
 
 button,
@@ -44,4 +48,9 @@ button {
 
 a {
   color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
