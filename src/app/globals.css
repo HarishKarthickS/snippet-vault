@@ -1,3 +1,18 @@
+:root {
+  --gallery: #070707;
+  --plaster: #101010;
+  --seam: #1c1c1c;
+  --spot-core: #fff7e4;
+  --spot-mid: rgba(255, 244, 214, 0.22);
+  --matte: #fbfbfb;
+  --graphite: #161616;
+  --quiet: #6a6a6a;
+  --label-face: #f3f3f3;
+  --label-edge: #2a2a2a;
+  --warn: #c45c3a;
+  --ok: #2f6f4e;
+}
+
 *,
 *::before,
 *::after {
@@ -8,4 +23,25 @@ html,
 body {
   margin: 0;
   min-height: 100%;
+  background: var(--gallery);
+  color: var(--label-face);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-wall), "DM Sans", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
 }
