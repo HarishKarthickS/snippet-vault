@@ -8,9 +8,9 @@ type Props = {
   onSelect: (id: string) => void;
 };
 
-export function WallCatalog({ snippets, selectedId, onSelect }: Props) {
+export function SnippetList({ snippets, selectedId, onSelect }: Props) {
   return (
-    <div className="catalog-scroll" role="list" aria-label="Accession catalog">
+    <div className="catalog-scroll" role="list" aria-label="Snippets">
       {snippets.map((snippet) => (
         <button
           key={snippet.id}
@@ -20,8 +20,10 @@ export function WallCatalog({ snippets, selectedId, onSelect }: Props) {
           data-active={snippet.id === selectedId}
           onClick={() => onSelect(snippet.id)}
         >
-          <span className="acc">{snippet.accession}</span>
           <span className="title">{snippet.title}</span>
+          <span className="acc">
+            {snippet.language} · {snippet.accession}
+          </span>
         </button>
       ))}
     </div>

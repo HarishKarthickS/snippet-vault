@@ -209,6 +209,12 @@
   background: var(--paper);
 }
 
+.matte header > div:first-child {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
 .matte h1 {
   margin: 0;
   font-size: 1.05rem;

@@ -1,27 +1,27 @@
 "use client";
 
-import { ConservationHold, EmptyCatalog, EmptySpotlight, LightsWarming } from "./EmptyStates";
-import { LanguagePlaques } from "./LanguagePlaques";
-import { SpotlightCard } from "./SpotlightCard";
-import { WallCatalog } from "./WallCatalog";
+import { EmptyCatalog, EmptyEditor, LoadingVault, VaultErrorPanel } from "./EmptyStates";
+import { LanguageNav } from "./LanguageNav";
+import { CodePane } from "./CodePane";
+import { SnippetList } from "./SnippetList";
 import { useVault } from "./useVault";
 
-export function GalleryApp() {
+export function VaultApp() {
   const vault = useVault();
 
   if (!vault.ready) {
-    return <LightsWarming />;
+    return <LoadingVault />;
   }
 
   if (vault.error) {
-    return <ConservationHold error={vault.error} onRestore={vault.restore} />;
+    return <VaultErrorPanel error={vault.error} onRestore={vault.restore} />;
   }
 
   return (
     <div className="app">
       <aside className="lang-col">
         <p className="brand">Snippet Vault</p>
-        <LanguagePlaques
+        <LanguageNav
           snippets={vault.snippets}
           language={vault.language}
           onChange={vault.setLanguage}
@@ -29,9 +29,9 @@ export function GalleryApp() {
       </aside>
       <aside className="list-col">
         <div className="search">
-          <label htmlFor="catalog-search">Search</label>
+          <label htmlFor="snippet-search">Search</label>
           <input
-            id="catalog-search"
+            id="snippet-search"
             value={vault.query}
             onChange={(event) => vault.setQuery(event.target.value)}
             placeholder="Title, body, or id"
@@ -42,7 +42,7 @@ export function GalleryApp() {
           {vault.visible.length === 0 ? (
             <EmptyCatalog />
           ) : (
-            <WallCatalog
+            <SnippetList
               snippets={vault.visible}
               selectedId={vault.selected?.id ?? null}
               onSelect={vault.select}
@@ -52,14 +52,14 @@ export function GalleryApp() {
       </aside>
       <section className="editor-col">
         {vault.selected ? (
-          <SpotlightCard
+          <CodePane
             snippet={vault.selected}
             copied={vault.copied}
             copyFailed={vault.copyFailed}
             onCopy={() => void vault.copySelected()}
           />
         ) : (
-          <EmptySpotlight />
+          <EmptyEditor />
         )}
       </section>
     </div>

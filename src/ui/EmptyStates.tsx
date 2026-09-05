@@ -2,17 +2,17 @@
 
 import type { VaultError } from "@/domain";
 
-export function LightsWarming() {
+export function LoadingVault() {
   return (
     <div className="hall">
       <p className="mast">
-        <strong>Hall 14</strong> · lights warming
+        <strong>Snippet Vault</strong> · Loading snippets…
       </p>
     </div>
   );
 }
 
-export function ConservationHold({
+export function VaultErrorPanel({
   error,
   onRestore,
 }: {
@@ -21,15 +21,11 @@ export function ConservationHold({
 }) {
   return (
     <div className="hall">
-      <div className="ceiling">
-        <div className="track" />
-        <div className="lamp" />
-      </div>
       <section className="banner" data-kind="error">
-        <h1>Conservation hold</h1>
+        <h1>Couldn’t load the vault</h1>
         <p>{error.message}</p>
         <button type="button" className="plaque-btn" onClick={onRestore}>
-          Rehang the seed works
+          Restore seed snippets
         </button>
       </section>
     </div>
@@ -39,17 +35,17 @@ export function ConservationHold({
 export function EmptyCatalog() {
   return (
     <div className="empty-wall empty-wall--flush">
-      <h1>Nothing on this wall</h1>
-      <p>No fragment matches the search or the language plaque.</p>
+      <h1>No matching snippets</h1>
+      <p>Try another search or language.</p>
     </div>
   );
 }
 
-export function EmptySpotlight() {
+export function EmptyEditor() {
   return (
     <div className="empty-wall">
-      <h1>The spotlight is empty</h1>
-      <p>Choose another plaque, or clear the search.</p>
+      <h1>No snippet selected</h1>
+      <p>Choose one from the list, or clear the search.</p>
     </div>
   );
 }
