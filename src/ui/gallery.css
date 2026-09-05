@@ -300,6 +300,11 @@
   font-size: 14px;
 }
 
+.empty-wall--flush {
+  text-align: left;
+  width: auto;
+}
+
 .mast {
   position: absolute;
   top: 22px;
