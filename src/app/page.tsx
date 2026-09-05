@@ -1,5 +1,5 @@
-import { GalleryApp } from "@/ui/GalleryApp";
+import { VaultApp } from "@/ui/VaultApp";
 
 export default function HomePage() {
-  return <GalleryApp />;
+  return <VaultApp />;
 }

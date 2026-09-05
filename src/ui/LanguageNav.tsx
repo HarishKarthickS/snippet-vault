@@ -9,18 +9,17 @@ type Props = {
   onChange: (value: Language | "all") => void;
 };
 
-export function LanguagePlaques({ snippets, language, onChange }: Props) {
+export function LanguageNav({ snippets, language, onChange }: Props) {
   return (
-    <div className="language-rail" role="tablist" aria-label="Wall labels by language">
+    <nav className="language-rail" aria-label="Languages">
       <button
         type="button"
         className="plaque"
-        role="tab"
         data-active={language === "all"}
         onClick={() => onChange("all")}
       >
-        <span className="lang">All media</span>
-        <span className="meta">{snippets.length} works</span>
+        <span className="lang">All</span>
+        <span className="meta">{snippets.length}</span>
       </button>
       {LANGUAGES.map((lang) => {
         const count = snippets.filter((item) => item.language === lang).length;
@@ -29,15 +28,14 @@ export function LanguagePlaques({ snippets, language, onChange }: Props) {
             key={lang}
             type="button"
             className="plaque"
-            role="tab"
             data-active={language === lang}
             onClick={() => onChange(lang)}
           >
             <span className="lang">{lang}</span>
-            <span className="meta">{count === 0 ? "not hung" : `${count} hung`}</span>
+            <span className="meta">{count}</span>
           </button>
         );
       })}
-    </div>
+    </nav>
   );
 }
