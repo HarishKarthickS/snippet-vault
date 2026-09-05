@@ -1,5 +1,6 @@
 "use client";
 
+import { ConservationHold, EmptyCatalog, EmptySpotlight, LightsWarming } from "./EmptyStates";
 import { LanguagePlaques } from "./LanguagePlaques";
 import { SpotlightCard } from "./SpotlightCard";
 import { WallCatalog } from "./WallCatalog";
@@ -9,31 +10,11 @@ export function GalleryApp() {
   const vault = useVault();
 
   if (!vault.ready) {
-    return (
-      <div className="hall">
-        <p className="mast">
-          <strong>Hall 14</strong> · lights warming
-        </p>
-      </div>
-    );
+    return <LightsWarming />;
   }
 
   if (vault.error) {
-    return (
-      <div className="hall">
-        <div className="ceiling">
-          <div className="track" />
-          <div className="lamp" />
-        </div>
-        <section className="banner" data-kind="error">
-          <h1>Conservation hold</h1>
-          <p>{vault.error.message}</p>
-          <button type="button" className="plaque-btn" onClick={vault.restore}>
-            Rehang the seed works
-          </button>
-        </section>
-      </div>
-    );
+    return <ConservationHold error={vault.error} onRestore={vault.restore} />;
   }
 
   return (
@@ -59,10 +40,7 @@ export function GalleryApp() {
             />
           </div>
           {vault.visible.length === 0 ? (
-            <div className="empty-wall" style={{ textAlign: "left", width: "auto" }}>
-              <h1>Nothing on this wall</h1>
-              <p>No fragment matches the search or the language plaque.</p>
-            </div>
+            <EmptyCatalog />
           ) : (
             <WallCatalog
               snippets={vault.visible}
@@ -80,10 +58,7 @@ export function GalleryApp() {
               onCopy={() => void vault.copySelected()}
             />
           ) : (
-            <div className="empty-wall">
-              <h1>The spotlight is empty</h1>
-              <p>Choose another plaque, or clear the search.</p>
-            </div>
+            <EmptySpotlight />
           )}
           <LanguagePlaques
             snippets={vault.snippets}
